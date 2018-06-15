@@ -57,7 +57,6 @@ def gitUrl = 'https://github.com/lijian0103/RxGalleryFinal.git'
 
 group = "cn.cnlee.RxCustomizedImagePicker"
 version = "0.0.23"
-project.archivesBaseName = "library"
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
