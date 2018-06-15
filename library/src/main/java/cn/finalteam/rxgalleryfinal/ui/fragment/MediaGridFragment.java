@@ -642,7 +642,7 @@ public class MediaGridFragment extends BaseFragment implements MediaGridView, Re
             bundle.putInt(UCrop.EXTRA_MAX_SIZE_X, mConfiguration.getMaxResultWidth());
             bundle.putInt(UCrop.EXTRA_MAX_SIZE_Y, mConfiguration.getMaxResultHeight());
             bundle.putInt(UCrop.Options.EXTRA_ASPECT_RATIO_SELECTED_BY_DEFAULT, mConfiguration.getSelectedByDefault());
-            bundle.putBoolean(UCrop.Options.EXTRA_FREE_STYLE_CROP, mConfiguration.isFreestyleCropEnabled());
+            bundle.putInt(UCrop.Options.EXTRA_FREE_STYLE_CROP, mConfiguration.isFreestyleCropEnabled());
             bundle.putParcelable(UCrop.EXTRA_INPUT_URI, inputUri);
             // UCrop 参数 end
 

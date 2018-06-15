@@ -72,7 +72,7 @@ public class Configuration implements Parcelable {
     //等比缩放值表,默认1:1,3:4,原图比例,3:2,16:9
     private AspectRatio[] aspectRatio;
     //是否允许改变裁剪大小
-    private boolean freestyleCropEnabled = OverlayView.DEFAULT_FREESTYLE_CROP_ENABLED;
+    private int freestyleCropEnabled = OverlayView.FREESTYLE_CROP_MODE_ENABLE;
     //是否显示裁剪框半透明椭圆浮层
     private boolean ovalDimmedLayer = OverlayView.DEFAULT_CIRCLE_DIMMED_LAYER;//DEFAULT_OVAL_DIMMED_LAYER
     private int maxResultWidth;
@@ -104,7 +104,7 @@ public class Configuration implements Parcelable {
         aspectRatioY = in.readFloat();
         selectedByDefault = in.readInt();
         aspectRatio = in.createTypedArray(AspectRatio.CREATOR);
-        freestyleCropEnabled = in.readByte() != 0;
+        freestyleCropEnabled = in.readInt();
         ovalDimmedLayer = in.readByte() != 0;
         maxResultWidth = in.readInt();
         maxResultHeight = in.readInt();
@@ -343,11 +343,11 @@ public class Configuration implements Parcelable {
         this.aspectRatio = aspectRatio;
     }
 
-    public boolean isFreestyleCropEnabled() {
+    public int isFreestyleCropEnabled() {
         return freestyleCropEnabled;
     }
 
-    public void setFreestyleCropEnabled(boolean freestyleCropEnabled) {
+    public void setFreestyleCropEnabled(int freestyleCropEnabled) {
         this.freestyleCropEnabled = freestyleCropEnabled;
     }
 
@@ -401,7 +401,7 @@ public class Configuration implements Parcelable {
         parcel.writeFloat(aspectRatioY);
         parcel.writeInt(selectedByDefault);
         parcel.writeTypedArray(aspectRatio, i);
-        parcel.writeByte((byte) (freestyleCropEnabled ? 1 : 0));
+        parcel.writeInt(freestyleCropEnabled);
         parcel.writeByte((byte) (ovalDimmedLayer ? 1 : 0));
         parcel.writeInt(maxResultWidth);
         parcel.writeInt(maxResultHeight);
